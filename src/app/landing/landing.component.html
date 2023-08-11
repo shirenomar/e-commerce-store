@@ -1,0 +1,52 @@
+<div>
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="flex flex-wrap items-center justify-between p-4">
+
+            <a class="flex items-center">
+                <a (click)="toggle()"
+                   mat-icon-button>
+                    <mat-icon>menu</mat-icon>
+                </a>
+                <img src="/assets/images/app-logo.png"
+                     class="h-12 mr-3"
+                     alt="App Logo" />
+            </a>
+            <div class="hidden w-full md:block md:w-auto"
+                 id="navbar-default">
+                <ul
+                    class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg cursor-pointer md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li *ngFor="let link of homeLinks">
+                        <a
+                           class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{link}}</a>
+                    </li>
+                    <li><a class="block py-2 pl-3 pr-4 text-red-700 md:p-0 md:border-0"
+                           (click)="logout()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <mat-drawer-container>
+        <mat-drawer mode="side"
+                    [opened]="opened">
+
+            <a class="flex items-center p-4"
+               [routerLink]="['/home']"
+               [routerLinkActive]="'bg-gray-50'">
+                <mat-icon>home</mat-icon>
+                <span class="self-center pl-2 text-sm whitespace-nowrap dark:text-white">Home</span>
+            </a>
+
+            <a class="flex items-center p-4 cursor-pointer">
+                <mat-icon> contact_mail</mat-icon>
+                <span class="self-center pl-2 text-sm whitespace-nowrap dark:text-white">Contact us</span>
+            </a>
+
+        </mat-drawer>
+
+        <mat-drawer-content [class.margin-left]="opened"
+                            class="!overflow-hidden">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

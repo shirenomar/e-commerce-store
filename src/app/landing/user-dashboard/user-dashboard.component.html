@@ -1,0 +1,19 @@
+<mat-form-field class="!w-full !p-2">
+    <mat-select placeholder="Choose a Category"
+                (selectionChange)="onSelectCategory($event)">
+        <mat-option *ngFor="let category of categories$ | async"
+                    [value]="category">
+            {{ category }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+
+
+<mat-grid-list cols="3"
+               rowHeight="3:3">
+    <mat-grid-tile *ngFor="let product of products$ | async"
+                   class="!h-fit !list-item">
+        <app-product-item [item]="product"></app-product-item>
+    </mat-grid-tile>
+</mat-grid-list>
