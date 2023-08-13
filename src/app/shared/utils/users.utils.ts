@@ -1,5 +1,6 @@
-import { UserRole } from "../enums/user-role.enum";
-import { User } from "../models/user";
+import { UserRole } from "src/app/core/enums/user-role.enum"
+import { User } from "src/app/core/models/user"
+
 
 export class UsersUtils {
     static Users: User[] = [

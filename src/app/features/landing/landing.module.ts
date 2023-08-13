@@ -5,10 +5,10 @@ import { LandingComponent } from './landing.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ProductItemComponent } from './user-dashboard/product-item/product-item.component';
-import { SharedModule } from '../shared/shared.module';
-import { AuthGuard } from '../guards/auth.guard';
-import { AuthAdminGuard } from '../guards/auth.user.guard';
-import { AuthUserGuard } from '../guards/auth.admin.guard';
+import { AuthGuard } from '../../core/guards/auth.guard';
+import { AuthAdminGuard } from '../../core/guards/auth.user.guard';
+import { AuthUserGuard } from '../../core/guards/auth.admin.guard';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 const routes: Routes = [

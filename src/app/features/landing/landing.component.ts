@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HomeUtils } from '../utils/home.utils';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../user-auth/services/auth.service';
 import { Router } from '@angular/router';
+import { HomeUtils } from 'src/app/shared/utils/home.utils';
 
 @Component({
   selector: 'app-landing',

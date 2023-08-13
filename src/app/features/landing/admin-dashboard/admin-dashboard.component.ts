@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject, switchMap } from 'rxjs';
-import { IProduct } from 'src/app/models/product';
-import { ProductsService } from 'src/app/services/products.service';
-import { UsersUtils } from 'src/app/utils/users.utils';
+import { IProduct } from 'src/app/core/models/product';
+import { ProductsService } from 'src/app/core/services/products.service';
+import { UsersUtils } from 'src/app/shared/utils/users.utils';
 
 @Component({
   selector: 'app-admin-dashboard',

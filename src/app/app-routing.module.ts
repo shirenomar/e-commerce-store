@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserAuthComponent } from './user-auth/user-auth.component';
+import { UserAuthComponent } from './features/user-auth/user-auth.component';
 
 const routes: Routes = [
 
@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./landing/landing.module').then((m) => m.LandingModule),
+      import('./features/landing/landing.module').then((m) => m.LandingModule),
   }
 
 ];

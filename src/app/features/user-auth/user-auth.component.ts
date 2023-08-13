@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { UserRole } from '../enums/user-role.enum';
+import { AuthService } from './services/auth.service';
+import { UserRole } from '../../core/enums/user-role.enum';
 @Component({
   selector: 'app-user-auth',
   templateUrl: './user-auth.component.html',
