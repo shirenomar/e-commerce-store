@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IProduct } from '../models/product';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  private productsUrl = 'https://fakestoreapi.com/products';
-  private categories = 'https://fakestoreapi.com/products/categories';
-  private productsByCategoryUrl = 'https://fakestoreapi.com/products/category'
+  private productsUrl = `${environment.apiBaseUrl}/products`;
+  private categories = `${this.productsUrl}/categories`;
+  private productsByCategoryUrl = `${this.productsUrl}/category`
 
 
 
