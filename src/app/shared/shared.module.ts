@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MatModules = [
   MatCardModule,
@@ -30,7 +31,8 @@ const MatModules = [
   MatTableModule,
   MatPaginatorModule,
   MatMenuModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDialogModule
 
 ]
 

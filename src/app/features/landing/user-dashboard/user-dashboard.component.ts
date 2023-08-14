@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/core/services/products.service';
 export class UserDashboardComponent implements OnInit {
 
   constructor(private productsService: ProductsService) { }
-  products$ = this.productsService.getProductsList();
+  products$ = this.productsService.getProductsList(false);
   categories$ = this.productsService.getCategoriesList();
   events: string[] = [];
   opened: boolean = false;

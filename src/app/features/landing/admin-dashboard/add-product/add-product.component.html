@@ -1,0 +1,71 @@
+<h2 mat-dialog-title
+    align="center"> Add New Product</h2>
+<mat-dialog-content class="mat-typography"
+                    [formGroup]="addProductForm">
+    <div class="flex">
+        <mat-form-field appearance="outline"
+                        class="p-2">
+            <input matInput
+                   placeholder="Product Name"
+                   formControlName="title">
+            <mat-error>
+                Product Name is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+                        class="p-2">
+            <input matInput
+                   placeholder="Product Price"
+                   type="number"
+                   formControlName="price">
+            <mat-error>
+                Product Price is required.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+                        class="p-2">
+            <input matInput
+                   placeholder="Product Description"
+                   formControlName="description">
+        </mat-form-field>
+    </div>
+    <div class="flex">
+
+        <mat-form-field appearance="outline"
+                        class="p-2">
+            <mat-select placeholder="Product Category"
+                        [formControlName]="'category'">
+                <mat-option *ngFor="let category of categories$ | async"
+                            [value]="category">
+                    {{ category }}
+                </mat-option>
+            </mat-select>
+            <mat-error>
+                Product Category is required.
+            </mat-error>
+        </mat-form-field>
+
+        <div class="flex items-center p-2">
+            <input #imageInput
+                   hidden="true"
+                   type="file"
+                   (change)="uploadImage()"
+                   accept="image/*" />
+            <button mat-flat-button
+                    color="secondary"
+                    class="mx-auto"
+                    (click)="imageInput.click()">Choose Image</button>
+        </div>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center"
+                    class="!p-5">
+    <button mat-raised-button
+            color="secondary"
+            mat-dialog-close>Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="addNewProduct()"
+            type="submit">Add New Product</button>
+</mat-dialog-actions>

@@ -1,28 +1,52 @@
-import { Component } from '@angular/core';
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IProduct } from 'src/app/core/models/product';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { UsersUtils } from 'src/app/shared/utils/users.utils';
+import { MatDialog } from '@angular/material/dialog';
+import { AddProductComponent } from './add-product/add-product.component';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html'
 })
-export class AdminDashboardComponent {
+export class AdminDashboardComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'category', 'price', 'remove', "Edit"];
   columnsSchema: any = UsersUtils.COLUMNS_SCHEMA;
   editMode: boolean = false;
-  getProducts$ = new BehaviorSubject(true);
-  products$ = this.getProducts$.pipe(switchMap(() => this.productsService.getProductsList()));
+  dataSource!: IProduct[];
   categories$ = this.productsService.getCategoriesList();
-  constructor(private productsService: ProductsService) { }
+  @ViewChild(MatTable) table!: MatTable<any>;
+
+  constructor(private productsService: ProductsService, private matDialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.productsService.getProductsList(true).subscribe((products) => this.dataSource = products);
+  }
 
   removeProduct(id: number) {
-    this.productsService.deleteProduct(id).subscribe(() => this.getProducts$.next(true));
+    this.productsService.deleteProduct(id).subscribe((product) => {
+      this.dataSource = this.dataSource.filter((item) => item.id !== product.id)
+    });
 
   }
 
   updateProduct(row: IProduct) {
-    this.productsService.updateProduct(row).subscribe(() => this.editMode = false);
+    this.productsService.updateProduct(row).subscribe(() => {
+      this.editMode = false
+    });
+  }
+
+  addNewProduct() {
+    // Generate New ID
+    let newId = this.dataSource?.length + 1;
+
+    // Open Add Product Dialog
+    this.matDialog.open(AddProductComponent, {
+      data: newId
+    }).afterClosed().subscribe((newProduct) => {
+      this.dataSource.push(newProduct)
+      this.table.renderRows();
+    })
   }
 }

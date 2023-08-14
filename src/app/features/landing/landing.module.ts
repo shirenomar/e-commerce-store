@@ -9,6 +9,7 @@ import { AuthGuard } from '../../core/guards/auth.guard';
 import { AuthAdminGuard } from '../../core/guards/auth.user.guard';
 import { AuthUserGuard } from '../../core/guards/auth.admin.guard';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AddProductComponent } from './admin-dashboard/add-product/add-product.component';
 
 
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
     AdminDashboardComponent,
     UserDashboardComponent,
     ProductItemComponent,
-    LandingComponent
+    LandingComponent,
+    AddProductComponent
   ],
   imports: [
     CommonModule,
