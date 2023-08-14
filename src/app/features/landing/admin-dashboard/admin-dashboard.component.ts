@@ -3,8 +3,8 @@ import { IProduct } from 'src/app/core/models/product';
 import { ProductsService } from 'src/app/core/services/products.service';
 import { UsersUtils } from 'src/app/shared/utils/users.utils';
 import { MatDialog } from '@angular/material/dialog';
-import { AddProductComponent } from './add-product/add-product.component';
 import { MatTable } from '@angular/material/table';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -24,8 +24,8 @@ export class AdminDashboardComponent implements OnInit {
     this.productsService.getProductsList(true).subscribe((products) => this.dataSource = products);
   }
 
-  removeProduct(id: number) {
-    this.productsService.deleteProduct(id).subscribe((product) => {
+  removeProduct(product: IProduct) {
+    this.productsService.deleteProduct(product).subscribe((product) => {
       this.dataSource = this.dataSource.filter((item) => item.id !== product.id)
     });
 
@@ -40,7 +40,6 @@ export class AdminDashboardComponent implements OnInit {
   addNewProduct() {
     // Generate New ID
     let newId = this.dataSource?.length + 1;
-
     // Open Add Product Dialog
     this.matDialog.open(AddProductComponent, {
       data: newId

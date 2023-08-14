@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const MatModules = [
   MatCardModule,
@@ -32,8 +33,8 @@ const MatModules = [
   MatPaginatorModule,
   MatMenuModule,
   MatSelectModule,
-  MatDialogModule
-
+  MatDialogModule,
+  MatProgressSpinnerModule
 ]
 
 

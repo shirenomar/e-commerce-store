@@ -31,15 +31,16 @@ export class AddProductComponent {
   uploadImage() { } // TODO
 
   addNewProduct() {
+    let newItem = {
+      id: this.dialogData,
+      ...this.addProductForm.value
+    }
+
     if (this.addProductForm.invalid) {
       this.addProductForm.markAllAsTouched()
       return;
     };
-    this.productsService.addProduct({
-      id: this.dialogData,
-      ...this.addProductForm.value
-    }
-    ).subscribe((product) => this.dialogRef.close(product));
+    this.productsService.addProduct(newItem).subscribe(() => this.dialogRef.close(newItem));
   }
 
 }

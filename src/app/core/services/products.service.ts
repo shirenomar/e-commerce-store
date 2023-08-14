@@ -41,18 +41,18 @@ export class ProductsService {
 
   addProduct(product: IProduct) {
     return this.httpClient.post<IProduct>(this.productsUrl, product).pipe(tap((item) => {
-      this.updateStoredProducts(item, ProductState.Add);
+      this.updateStoredProducts(product, ProductState.Add);
     }));
   }
 
   updateProduct(product: IProduct) {
     return this.httpClient.put<IProduct>(`${this.productsUrl}/${product.id}`, product).pipe(tap((item) => {
-      this.updateStoredProducts(item, ProductState.Update);
+      this.updateStoredProducts(product, ProductState.Update);
     }));;
   }
 
-  deleteProduct(id: number): Observable<IProduct> {
-    return this.httpClient.delete<IProduct>(`${this.productsUrl}/${id}`).pipe(tap((item) => {
+  deleteProduct(item: IProduct): Observable<IProduct> {
+    return this.httpClient.delete<IProduct>(`${this.productsUrl}/${item.id}`).pipe(tap((_) => {
       this.updateStoredProducts(item, ProductState.Delete);
     }));;
   }
